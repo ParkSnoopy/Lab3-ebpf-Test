@@ -179,7 +179,7 @@ TEST(Basic, NAT_UDP) {
     ret = system(cmd.c_str());
     ASSERT_EQ(ret, 0);
     usleep(1000);
-    auto [success, msg] = tryToCommUDP("10.0.0.4", port);
+    auto [success, msg] = tryToCommUDP("200.0.0.4", port);
     ret = system(SCRIPT("stop_server_udp.sh"));
     ASSERT_TRUE(success) << msg;
 }
@@ -199,7 +199,7 @@ TEST(Basic, ProxyAdd) {
     ret = system((std::string(SCRIPT("start_server.sh ns3 ") + std::to_string(baned_port)).c_str()));
     ASSERT_EQ(ret, 0);
     usleep(1000);
-    auto [success, msg] = tryToConnect("10.0.0.3", baned_port);
+    auto [success, msg] = tryToConnect("200.0.0.3", baned_port);
     ret = system(SCRIPT("stop_server.sh"));
     ASSERT_TRUE(success) << msg;
 }
@@ -224,7 +224,7 @@ TEST(Basic, ProxyDel) {
     ret = system((std::string(SCRIPT("start_server.sh ns3 ") + std::to_string(baned_port)).c_str()));
     ASSERT_EQ(ret, 0);
     usleep(1000);
-    auto [success, msg] = tryToConnect("10.0.0.3", baned_port);
+    auto [success, msg] = tryToConnect("200.0.0.3", baned_port);
     ret = system(SCRIPT("stop_server.sh"));
     ASSERT_TRUE(success) << msg;
 }
@@ -259,7 +259,7 @@ TEST(Multiflow, UDP_NAT) {
     ASSERT_EQ(ret, 0);
     usleep(1000);
     for (auto port : baned_ports) {
-        auto [success, msg] = tryToCommUDP("10.0.0.3", port);
+        auto [success, msg] = tryToCommUDP("200.0.0.3", port);
         if (!success) {
             ret = system(SCRIPT("stop_server.sh"));
             ASSERT_TRUE(success) << msg;
@@ -292,7 +292,7 @@ TEST(Multiflow, TCP_NAT) {
     ASSERT_EQ(ret, 0);
     usleep(1000);
     for (auto port : baned_ports) {
-        auto [success, msg] = tryToConnect("10.0.0.3", port);
+        auto [success, msg] = tryToConnect("200.0.0.3", port);
         if (!success) {
             ret = system(SCRIPT("stop_server.sh"));
             ASSERT_TRUE(success) << msg;
@@ -325,7 +325,7 @@ TEST(Multiflow, ProxyAdd) {
     ASSERT_EQ(ret, 0);
     usleep(1000);
     for (auto port : baned_ports) {
-        auto [success, msg] = tryToConnect("10.0.0.3", port);
+        auto [success, msg] = tryToConnect("200.0.0.3", port);
         if (!success) {
             ret = system(SCRIPT("stop_server.sh"));
             ASSERT_TRUE(success) << msg;
@@ -363,7 +363,7 @@ TEST(Multiflow, ProxyDel) {
     }
     usleep(1000);
     for (auto port : baned_ports) {
-        auto [success, msg] = tryToConnect("10.0.0.3", port);
+        auto [success, msg] = tryToConnect("200.0.0.3", port);
         if (!success) {
             ret = system(SCRIPT("stop_server.sh"));
             ASSERT_TRUE(success) << msg;

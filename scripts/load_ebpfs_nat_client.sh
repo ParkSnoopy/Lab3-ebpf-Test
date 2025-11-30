@@ -1,4 +1,5 @@
 #!/bin/bash
+
 mount -t bpf bpf /sys/fs/bpf
 rm -rf /sys/fs/bpf/*
 
