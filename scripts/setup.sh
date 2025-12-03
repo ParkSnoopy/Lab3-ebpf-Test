@@ -16,10 +16,10 @@ ip link set veth5_4 promisc on
 # ns1
 ip link set veth1_2 netns ns1
 ip netns exec ns1 ethtool -K veth1_2 rx off tx off
-ip netns exec ns1 ip addr add 192.168.1.2/24 dev veth1_2
+ip netns exec ns1 ip addr add 10.89.0.2/16 dev veth1_2
 ip netns exec ns1 ip link set veth1_2 up
 ip netns exec ns1 ip link set lo up
-ip netns exec ns1 ip route add default via 192.168.1.1
+ip netns exec ns1 ip route add default via 10.89.0.1
 
 # ns2
 ip link set veth2_1 netns ns2
@@ -27,7 +27,7 @@ ip link set veth2_5 netns ns2
 ip netns exec ns2 ethtool -K veth2_1 rx off tx off
 ip netns exec ns2 ethtool -K veth2_5 rx off tx off
 ip netns exec ns2 sysctl -w net.ipv4.ip_forward=1
-ip netns exec ns2 ip addr add 192.168.1.1/24 dev veth2_1
+ip netns exec ns2 ip addr add 10.89.0.1/24 dev veth2_1
 ip netns exec ns2 ip link set veth2_1 up
 ip netns exec ns2 ip addr add 200.0.0.2/8 dev veth2_5
 ip netns exec ns2 ip link set veth2_5 up
