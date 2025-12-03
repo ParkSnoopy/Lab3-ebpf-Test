@@ -9,7 +9,7 @@
 #include <string>
 #include <algorithm>
 
-#define SCRIPT(script_name) (std::string("../test_utils/scripts/")+std::string(script_name)).c_str()
+#define SCRIPT(script_name) (std::string("./test_utils/scripts/")+std::string(script_name)).c_str()
 
 static uint16_t generateRandomPort() {
     static thread_local std::random_device rd;
