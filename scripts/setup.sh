@@ -56,7 +56,7 @@ ip netns exec ns4 ip route add default via 200.0.0.1
 ip link set veth5_2 netns ns5
 ip link set veth5_3 netns ns5
 ip link set veth5_4 netns ns5
-ip netns exec ns5 ./../test_utils/scripts/setup_router.sh
+ip netns exec ns5 ./test_utils/scripts/setup_router.sh
 
 useradd lab3_user
 echo "Setup done!"
